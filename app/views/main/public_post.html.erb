@@ -1,0 +1,26 @@
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<div id="flex-container" class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="card">
+				<h2 class="text-center" style="font-weight: normal; opacity: 0.7;">发表话题</h2>
+				<hr>
+				<p class="text-center faded">本话题将发表于<%= ForumCategory.find(params[:c]).title %></p>
+				<div class="row">
+					<%= form_tag('/actions/admin-bin/public_post.do?c=' + params[:c].to_s, method: 'post') do |f| %>
+					<div class="col-md-10 col-md-offset-1" style="margin-bottom: 20px;">
+						<input class="form-control" type="text" name="title" placeholder="标题" />
+					</div>
+					<div class="col-md-10 col-md-offset-1" style="margin-bottom: 20px;">
+						<textarea class="form-control" style="height: 400px; resize: vertical;" type="text" name="content" placeholder="内容..."></textarea>
+					</div>
+					<div class="col-md-10 col-md-offset-1" style="margin-bottom: 20px;">
+						<strong>* 支持Markdown</strong>
+						<button class="btn btn-primary" style="float: right;" type="submit">发布</button>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

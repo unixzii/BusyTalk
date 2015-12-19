@@ -1,0 +1,100 @@
+body {
+	background-color: #f3f3f3;
+	padding-top: 50px;
+}
+
+.navbar-default {
+	background-color: #fff;
+}
+
+.navbar-default .navbar-brand {
+	color: #e8682e;
+	font-weight: bold;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: #e8682e;
+	font-weight: bold;
+}
+
+.navbar-default .navbar-nav>li>a {
+	border-bottom: 2px solid transparent;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	background-color: #f0f0f0;
+}
+
+.navbar-default .navbar-nav>li.active>a {
+	background-color: transparent;
+	border-bottom: 2px solid #666;
+}
+
+.navbar-default .badge {
+	background-color: #ee2200;
+	margin-top: -3px;
+}
+
+.btn-orange {
+	background-color: #e7672e;
+	color: #fff;
+}
+
+.btn-orange:hover {
+	background-color: #e2561a;
+	color: #fff;
+}
+
+.btn-orange:active {
+	background-color: #cb4f17;
+	color: #fff;
+}
+
+.form-control {
+	box-shadow: none;
+	border-width: 1.5px;
+}
+
+.form-control:focus {
+	box-shadow: none;
+}
+
+.form-control.error {
+	border-color: #dd0000;
+	background-color: #ffefef;
+	box-shadow: 0 0 10px rgba(255, 200, 200, 1.0);
+	transition: all .6s;
+}
+
+.form-control.error:focus {
+	border-color: #dd0000;
+	background-color: #fff;
+	box-shadow: none;
+}
+
+.pagination>li>a, .pagination>li>span {
+	color: #a0a0a0;
+}
+
+.pagination>li>a:hover, .pagination>li>span:hover {
+	color: #e8682e;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+	background-color: #e8682e;
+	border-color: #e8682e;
+}
+
+.card {
+	width: 100%;
+	padding: 10px 30px;
+	margin-bottom: 20px;
+	background-color: #fff;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	box-shadow: 0 5px 8px rgba(0, 0, 0, 0.09);
+}
+
+.faded {
+	opacity: 0.5;
+}

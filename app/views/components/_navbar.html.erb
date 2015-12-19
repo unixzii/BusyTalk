@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bt-navbar-collapse" aria-expanded="false">
+			    <span class="sr-only">Toggle navigation</span>
+			    <span class="icon-bar"></span>
+			    <span class="icon-bar"></span>
+			    <span class="icon-bar"></span>
+		    </button>
+			<a class="navbar-brand"><%= BusyTalk::Application.config.bbs_title %></a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bt-navbar-collapse">
+			<ul class="nav navbar-nav">
+				<% menus.each do |i| %>
+					<li class="<%= 'active' if i[:action] == params[:action] %>"><a href="<%= i[:link] %>"><%= i[:title] %></a></li>
+				<% end %>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<% if session[:current_user] %>
+					<li>
+						<a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">通知 <span class="badge hide">0</span></a>
+						<ul class="dropdown-menu" style="width: 400px; padding: 0 20px; min-height: 400px;">
+							<h3 style="font-size: 14pt; font-weight: normal; opacity: 0.6;">您没有未读通知</h3>
+							<hr>
+							<% if User.find(session[:current_user]).notifications %>
+								<%= render partial: 'components/notifications' %>
+							<% else %>
+								<div class="text-center">
+									<i class="glyphicon glyphicon-inbox" style="margin-top: 40px; margin-bottom: 40px; font-size: 60pt; opacity: 0.1;"></i>
+									<br>
+									<span style="font-weight: bold; opacity: 0.3;">没有通知</span>
+								</div>
+							<% end %>
+						</ul>
+					</li>
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= User.find(session[:current_user]).username %> <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#"><i class="glyphicon glyphicon-user"></i> 我的资料</a></li>
+			            <li><a href="#"><i class="glyphicon glyphicon-th-list"></i> 我的讨论</a></li>
+			            <li><a href="#"><i class="glyphicon glyphicon-star"></i> 我的收藏</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="#"><i class="glyphicon glyphicon-lock"></i> 修改密码</a></li>
+			          </ul>
+			        </li>
+			        <li><a href="/logout">退出</a></li>
+		        <% else %>
+		        	<li><a href="/signup">注册</a></li>
+		        	<li><a href="/login">登录</a></li>
+		        <% end %>
+		    </ul>
+		</div>
+	</div>
+</nav>

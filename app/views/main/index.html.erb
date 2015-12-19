@@ -1,0 +1,75 @@
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<div id="flex-container" class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-8 col-xs-12">
+					<div class="card">
+						<h3><%= @category.title %></h3>
+						<p style="white-space: pre;">今日发帖：<%= @today_post_count %>      总帖数：<%= @post_count %></p>
+						<p>版主：<%= @category.admins %></p>
+					</div>
+					<div class="card">
+						<% first = true %>
+						<% @posts.each do |i| %>
+							<% if not first %><hr style="margin: 10px;"><% end; first = false %>
+							<div class="row">
+								<div class="col-md-12">
+								<a style="font-size: 14pt; color: #444; text-decoration: none;" href="#"><%= i[:title] %></a>
+								<p class="faded" style="margin-top: 10px;">由<%= i.user[:username] %>发表于<%= i[:created_at].strftime('%Y年%m月%d日 %H:%M') %> - <% if Time.new - (i[:last_commented_at] || Time.new(0)) < 3600 %>最近有回复<% else %>最近无回复<% end %></p>
+								</div>
+							</div>
+						<% end %>
+
+						<% if @posts.count == 0 %>
+							<h3 class="faded" style="line-height: 200px; text-align: center;">暂无讨论</h3>
+						<% end %>
+
+						<nav>
+							<ul class="pagination">
+								<li>
+							    	<a href="/?c=<%= @category[:id] %>&page=<%= @current_page %>" aria-label="Previous">
+							    		<span aria-hidden="true">&laquo;</span>
+							    	</a>
+							  	</li>
+							  	<% if @page_start != 1 %>
+							  		<li><a href="/?c=<%= @category[:id] %>&page=1">1...</a></li>
+							  	<% end %>
+							  	<% @page_start.upto @page_end do |i| %>
+							  		<li class="<%= 'active' if @current_page + 1 == i %>"><a href="/?c=<%= @category[:id] %>&page=<%= i %>"><%= i %></a></li>
+							  	<% end %>
+							  	<% if @page_end != @page_count.ceil %>
+							  		<li><a href="/?c=<%= @category[:id] %>&page=<%= @page_count.ceil %>">...<%= @page_count.ceil %></a></li>
+							  	<% end %>
+							  	<li>
+							    	<a href="/?c=<%= @category[:id] %>&page=<%= @current_page + 2 %>" aria-label="Next">
+							      		<span aria-hidden="true">&raquo;</span>
+							    	</a>
+							  	</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12">
+					<div class="card" style="padding: 20px 20px">
+						<a id="btn-new-discuss" class="btn btn-orange btn-lg" href="/public_post?c=<%= @category.id %>" style="white-space: pre;"><i class="glyphicon glyphicon-pencil"></i>   新讨论</a>
+						<hr>
+						<h4 class="faded">板块信息</h4>
+						<p><%= @category[:description] %></p>
+						<hr>
+						<h4 class="faded">最新讨论</h4>
+						<% @recent_active_posts.each do |i| %>
+							<a style="display: block;" href="#"><%= i.title %></a>
+							<br>
+						<% end %>
+						<hr>
+						<h4 class="faded">友情链接</h4>
+						<p>虚位以待</p>
+						<hr>
+						<h4 class="faded">你的插件</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

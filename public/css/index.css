@@ -1,0 +1,40 @@
+#btn-new-discuss {
+	width: 100%;
+}
+
+#flex-container {
+	margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+	#flex-container {
+		margin-top: 50px;
+	}
+}
+
+.category-clip {
+	padding: 20px 10px;
+}
+
+.category-clip-wrapper {
+	transition: all 0.3s;
+}
+
+.category-clip-wrapper:hover {
+	cursor: pointer;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	transform: scale(1.05, 1.05);
+	filter: brightness(110%);
+	-webkit-filter: brightness(110%);
+	z-index: 1000;
+}
+
+.category-clip-wrapper:active {
+	transition-duration: 0.3s;
+	cursor: pointer;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+	transform: scale(1.02, 1.02);
+	filter: brightness(98%);
+	-webkit-filter: brightness(98%);
+	z-index: 1000;
+}

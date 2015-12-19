@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BusyTalk</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" type="text/css" href="/public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/common.css">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="/public/bootstrap/js/bootstrap.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render partial: "components/navbar", locals: { menus: get_nav_menus } %>
+
+<%= yield %>
+
+<footer style="text-align: center; margin-top: 50px; margin-bottom: 20px;">
+  <hr style="border-color: #d3d3d3;">
+  <p style="color: #b0b0b0;">Proudly using BusyTalk by Cyandev</p>
+</footer>
+
+</body>
+</html>

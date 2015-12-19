@@ -1,0 +1,46 @@
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<div id="flex-container" class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="card">
+				<h2 class="text-center" style="font-weight: normal; opacity: 0.7;">添加板块</h2>
+				<hr>
+				<div class="row" style="margin-bottom: 20px;">
+					<div class="col-md-8 col-md-offset-2">
+						<input id="input1" class="form-control" placeholder="板块标题" />
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<div class="col-md-8 col-md-offset-2">
+						<input id="input2" class="form-control" placeholder="板块主题色 (如ff5800)" />
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<div class="col-md-8 col-md-offset-2">
+						<textarea id="input3" class="form-control" placeholder="板块描述" style="height: 100px;"></textarea>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<div class="col-md-8 col-md-offset-2">
+						<input id="input4" class="form-control" placeholder="管理员ID (多个用空格分隔)" />
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<div class="col-md-8 col-md-offset-2">
+						<button class="btn btn-success" style="float: right;">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$('button').click(function () {
+		var title = $('#input1').val();
+		var color = $('#input2').val();
+		var desc = $('#input3').val();
+		var admins = $('#input4').val();
+
+		location.href = '/actions/admin-bin/add_category.do?title=' + title + '&color=' + color + '&desc=' + desc + '&admins=' + admins;
+	});
+</script>

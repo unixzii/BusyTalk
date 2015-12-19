@@ -1,0 +1,18 @@
+
+	<% User.find(session[:current_user]).notifications.each do |n| %>
+		<div class="row">
+			<div class="col-md-12">
+				<div style="display: inline-block; width: 50px; text-align: center;">
+					<i class="glyphicon glyphicon-envelope" style="font-size: 16pt; margin-top: calc(50% - 16pt);"></i>
+				</div>
+				<div style="float: right; width: calc(100% - 60px);">
+					<%= render inline: n[:content] %>
+				</div>
+				<div style="clear: both; margin-top: 30px; padding: 0 14px; opacity: 0.5;">
+					<span><%= n[:created_at].strftime('%Y年%m月%d日 %H:%M') %></span>
+					<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+			</div>
+		</div>
+		<hr>
+	<% end %>
